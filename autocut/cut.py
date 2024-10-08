@@ -111,19 +111,10 @@ class Cutter:
 
         segments = []
         # Avoid disordered subtitles
-        subs.sort(key=lambda x: x.start)
+        #subs.sort(key=lambda x: x.start)
         for x in subs:
-            if len(segments) == 0:
-                segments.append(
+            segments.append(
                     {"start": x.start.total_seconds(), "end": x.end.total_seconds()}
-                )
-            else:
-                if x.start.total_seconds() - segments[-1]["end"] < 0.5:
-                    segments[-1]["end"] = x.end.total_seconds()
-                else:
-                    segments.append(
-                        {"start": x.start.total_seconds(), "end": x.end.total_seconds()}
-                    )
 
         if is_video_file:
             media = editor.VideoFileClip(fns["media"])
