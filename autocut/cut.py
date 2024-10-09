@@ -86,7 +86,7 @@ class Cutter:
 
         is_video_file = utils.is_video(fns["media"].lower())
         outext = "mp4" if is_video_file else "mp3"
-        output_fn = utils.change_ext(utils.add_cut(fns["media"]), outext)
+        output_fn = utils.change_ext(utils.add_cut(fns["srt"]), outext)
         if utils.check_exists(output_fn, self.args.force):
             return
 
